@@ -85,6 +85,7 @@ const select = {
         thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
         thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
         thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+        thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
   
     initAccordion(){
@@ -140,13 +141,15 @@ const select = {
     // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
         const param = thisProduct.data.params[paramId];
         console.log(paramId, param);
-
+        
     // for every option in this category
       for(let optionId in param.options) {
       // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
         const option = param.options[optionId];
         console.log(optionId, option);
-        if(formData[paramId] && formData[paramId].includes(optionId)){
+        const optionSelected = formData[paramId] && formData[paramId].includes(optionId)
+
+        if(optionSelected){
           if(!option.default) {
             price += option.price;
           }
@@ -154,8 +157,17 @@ const select = {
           if(option.default){
             price -= option.price;
           }
-
         }
+
+        const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+        if(optionImage){
+          if(optionSelected){
+            optionImage.classList.add(classNames.menuProduct.imageVisible);
+          } else {
+            optionImage.classList.remove(classNames.menuProduct.imageVisible);
+          }
+        }
+        
     }
   }
 
