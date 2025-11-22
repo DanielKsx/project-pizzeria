@@ -154,6 +154,7 @@ const templates = {
       thisProduct.dom.cartButton.addEventListener('click', function(event){
       event.preventDefault();
       thisProduct.processOrder();
+      thisProduct.addToCart();
     });
   }
 
@@ -202,6 +203,7 @@ const templates = {
     }
   }
   /*multiply price by amount*/
+      thisProduct.priceSingle = price;
       price *= thisProduct.amountWidget.value;
   // update calculated price in the HTML
       thisProduct.dom.priceElem.innerHTML = price;
@@ -215,6 +217,65 @@ const templates = {
         thisProduct.processOrder();
       });
     }
+
+    addToCart(){
+      const thisProduct = this;
+
+      app.cart.add(thisProduct.prepareCartProduct() );
+    }
+
+    prepareCartProduct(){
+      const thisProduct = this;
+
+      const productSummary = {};
+
+      productSummary.id = thisProduct.id;
+      productSummary.name = thisProduct.data.name;
+      productSummary.amount = thisProduct.amountWidget.value;
+      productSummary.priceSingle = thisProduct.priceSingle;
+      productSummary.price = thisProduct.dom.priceElem.innerHTML;
+      productSummary.params = thisProduct.prepareCartProductParams();
+
+      return productSummary;
+    }
+
+    prepareCartProductParams(){
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.dom.form);
+
+      const paramsSummary = {};
+
+  // 3. Przejdź przez wszystkie kategorie 
+      for(let paramId in thisProduct.data.params) {
+
+    // 3a. Pobierz definicję kategorii
+      const param = thisProduct.data.params[paramId];
+
+    // 3b. W obiekcie podsumowania stwórz nową kategorię 
+      paramsSummary[paramId] = {
+        label: param.label,
+        options: {}
+       };
+
+    // 4. Pętla po opcjach 
+      for(let optionId in param.options) {
+
+      // 4a. Pobierz definicję opcji 
+      const option = param.options[optionId];
+
+      // 4b. Sprawdź, czy opcja jest wybrana 
+      const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+      // 4c. Jeśli wybrana, dodaj ją do wyników
+      if(optionSelected){
+        paramsSummary[paramId].options[optionId] = option.label;
+      }
+    }
+  }
+
+      return paramsSummary;
+}
 }
   class AmountWidget {
     constructor(element){
@@ -299,6 +360,7 @@ const templates = {
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     }
 
     initActions(){
@@ -309,7 +371,16 @@ const templates = {
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
 
+    }
 
+    add(menuProduct){
+      const thisCart = this;
+
+      console.log('adding product', menuProduct);
+
+      const generatedHTML = templates.cartProduct(menuProduct);
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      thisCart.dom.productList.appendChild(generatedDOM);
     }
   }
 
