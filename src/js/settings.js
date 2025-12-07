@@ -6,6 +6,7 @@ export const select = {
     bookingWidget: '#template-booking-widget',
   },
   containerOf: {
+    home: '#home',
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
@@ -66,6 +67,11 @@ export const select = {
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
   },
+  home: {
+    orderBox: '.home-order',
+    bookingBox: '.home-booking',
+    carousel: '.home-carousel',
+  }
 };
 
 export const classNames = {

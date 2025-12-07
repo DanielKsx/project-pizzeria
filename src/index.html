@@ -9,6 +9,7 @@
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.css">
+  <link rel="stylesheet" href="vendor/flickity/flickity.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,6 +22,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -62,6 +64,110 @@
   </header>
 
   <div id="pages">
+   <section id="home">
+    <div class="home container">
+      <div class="home__top">
+        <div class="home__box home__box--order home-order">
+          <div class="home__box-overlay"></div>
+          <h2>ORDER ONLINE</h2>
+          <p>Delicious food delivered to your door</p>
+        </div>
+        <div class="home__box home__box--booking home-booking">
+          <div class="home__box-overlay"></div>
+          <h2>BOOK A TABLE</h2>
+          <p>Visit our cozy restaurant.</p>
+        </div>
+
+      <div class="home__hours">
+        <h3>OPENING HOURS:</h3>
+        <p>TUE-SUN, 12PM - 12AM</p>
+      </div>
+    </div>
+
+    <div class="home__carousel home-carousel">
+      <div class="home__slide">
+        <div class="home__slide-img">
+          <img src="images/assets/pizza-3.jpg" alt="3">
+        </div>
+
+        <div class="home__slide-text">
+          <h4> AMAZING SERVICE!</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor..</p>
+          <span>- Margaret Osborne</span>
+        </div>
+      </div>
+      <div class="home__slide">
+        <div class="home__slide-img">
+          <img src="images/assets/pizza-3.jpg" alt="3">
+        </div>
+
+        <div class="home__slide-text">
+          <h4> TASTY FOOD!</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor..</p>
+          <span>- Margaret Osborne</span>
+        </div>
+      </div>
+      <div class="home__slide">
+        <div class="home__slide-img">
+          <img src="images/assets/pizza-3.jpg" alt="3">
+        </div>
+
+        <div class="home__slide-text">
+          <h4> GREAT STAFF!</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor..</p>
+          <span>- Margaret Osborne</span>
+        </div>
+      </div>
+    </div>
+
+      <div class="home__gallery">
+        <div class="home__gallery-item">
+          <img src="images/assets/pizza-4.jpg" alt="pizza 4">
+          <div class="home__gallery-overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="home__gallery-item">
+          <img src="images/assets/pizza-5.jpg" alt="pizza 5">
+          <div class="home__gallery-overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="home__gallery-item">
+          <img src="images/assets/pizza-6.jpg" alt="pizza 6">
+          <div class="home__gallery-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+          <div class="home__gallery-item">
+            <img src="images/assets/pizza-7.jpg" alt="pizza 7">
+            <div class="home__gallery-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+          <div class="home__gallery-item">
+            <img src="images/assets/pizza-8.jpg" alt="pizza 8">
+            <div class="home__gallery-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="home__gallery-item">
+            <img src="images/assets/pizza-9.jpg" alt="pizza 9">
+            <div class="home__gallery-overlay">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+        </div>
+      </div>
+
+      <a href="#" class="home__instagram">View more on Instagram</a>
+    </div>
+   </section>
    <section id="order">
      <div id="product-list" class="product-list container"></div>
    </section>
@@ -244,6 +350,7 @@
  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="vendor/flickity/flickity.pkgd.min.js"></script>
   <script src="./js/app.js" type="module"></script>
 </body>
 </html>

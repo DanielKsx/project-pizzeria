@@ -4,6 +4,7 @@
   import Product from './components/Product.js';
   import Cart from './components/Cart.js';
   import Booking from './components/Booking.js';
+  import Home from './components/Home.js';
 
   const app = {
     initPages: function(){
@@ -13,6 +14,7 @@
       thisApp.navLinks = document.querySelectorAll(select.nav.links);
 
       const idFromHash = window.location.hash.replace('#/', '');
+
 
       let pageMatchingHash = thisApp.pages[0].id;
 
@@ -37,6 +39,11 @@
           window.location.hash = '#/' + id;
         });
       }
+
+      window.addEventListener('hashchange', function(){
+        const idFromHash = this.window.location.hash.replace('#/', '');
+        thisApp.activatePage(idFromHash || thisApp.pages[0].id);
+      });
     },
 
     activatePage: function(pageId){
@@ -86,6 +93,7 @@
       const thisApp = this;
 
       thisApp.initPages();
+      thisApp.initHome();
       thisApp.initData();
       thisApp.initCart();
       thisApp.initBooking();
@@ -109,6 +117,12 @@
       const bookingElem = document.querySelector(select.containerOf.booking);
       thisApp.booking = new Booking(bookingElem);
     },
+
+    initHome: function(){
+      const thisApp = this;
+      const homeElem = document.querySelector(select.containerOf.home);
+      thisApp.home = new Home(homeElem);
+    }
   };
   
   app.init();
