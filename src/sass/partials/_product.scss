@@ -120,3 +120,45 @@
     }
   
   }
+
+ @media (max-width: 768px) {
+
+  .product {
+    padding: ($base-size * 2) ($base-size * 2);
+  }
+
+  .product__header {
+    @include flex(row, center, space-between);
+    flex-wrap: wrap;
+    gap: $base-size;
+  }
+
+  .product__base-price {
+    margin-left: auto;
+  }
+
+  .product__wrapper {
+    @include flex(column, flex-start, flex-start);
+  }
+
+  .product__order {
+    width: 100%;
+  }
+
+  .product__images {
+    width: 18px;
+    height: 180px;
+    margin: 20px auto 0;
+  }
+
+  .product__images > img {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+
+
+  .checkbox label {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}

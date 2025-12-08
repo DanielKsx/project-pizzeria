@@ -157,3 +157,35 @@
   }
 
 }
+
+
+@media (max-width: 768px) {
+  .cart {
+    position: fixed;
+    width: 260px;
+    right: $base-size;
+    top: $base-size * 4;
+    padding: $base-size;
+    border-radius: $radius;
+    z-index: 9999;
+  }
+
+  .cart__summary {
+    font-size: 10px;
+  }
+
+  .cart__total-number {
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart {
+    position: fixed;
+    width: 220px;
+    right: $base-size;
+  }
+}
